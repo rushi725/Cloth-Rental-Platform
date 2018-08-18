@@ -1,0 +1,81 @@
+{% extends 'welcome/header.html' %}
+{% load staticfiles %}
+  {% block body %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'welcome/css/products.css' %}">
+    <script src="{% static 'welcome/js/products.js' %}"></script>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <br><br><br>
+
+<div class="container">
+    <div class="row">
+    {% for p in products %}
+    <div class="col-sm-4" style="height: 550px;">
+        <div class="make-3D-space">
+            <div class="product-card">
+                <div class="product-front">
+                    <div class="shadow"></div>
+                    <img src="{{p.pimage.url}}" alt="" width="330px" />
+                    <div class="image_overlay"></div>
+                   <a href="{% url 'welcome:detail' p.id %}"> <div class="view_details">View detail</div>
+                    <div class="stats">         
+                        <div class="stats-container">
+                            <span class="product_price"><span class="fa fa-inr"></span>{{p.price}}</span>
+                            <span class="product_name">{{p.title}}</span>    
+                            <p>{{p.description}}</p>                                            
+                            
+                            <div class="product-options">
+                            <strong>SIZES</strong>
+                            <span>XS, S, M, L, XL, XXL</span>
+                        </div>                       
+                    </div>                         
+                       </div></a>
+            </div>
+        </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+<script>
+$(document).ready(function(){
+    $(".dropdown").hover(            
+        function() {
+            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
+            $(this).toggleClass('open');        
+        },
+        function() {
+            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("400");
+            $(this).toggleClass('open');       
+        }
+    );
+
+    $(".product-card").hover(function(){
+            $(this).addClass('animate');
+            $('div.carouselNext, div.carouselPrev').addClass('visible');            
+         }, function(){
+            $(this).removeClass('animate');         
+            $('div.carouselNext, div.carouselPrev').removeClass('visible');
+    });
+
+  $(".single-item").slick({
+  dots: false,
+  slidesToShow: 3,
+  centerMode: true,
+  centerPadding: '40px',
+  autoplay: true,
+  autoplaySpeed: 1000,
+});         
+});
+window.sr = ScrollReveal();
+sr.reveal('.slide1',{ duration: 500 });
+sr.reveal('.slide2',{ duration: 500 });
+sr.reveal('.slide3',{ duration: 500 });
+sr.reveal('.slide4',{ duration: 500 });
+sr.reveal('.slide5',{ duration: 500 });
+sr.reveal('.slide6',{ duration: 500 });
+sr.reveal('.slide7',{ duration: 500 });
+</script>
+{% endblock %}

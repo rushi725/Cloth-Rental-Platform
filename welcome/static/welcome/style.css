@@ -1,0 +1,276 @@
+body{
+    font-family: 'Rubik', sans-serif !important;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+.carousel-subtitle{
+    font-size: 18px;
+}
+#myCarousel{
+    margin-top: -21px;
+}
+.steps{
+    margin-left: 5%;
+    margin-top: 3%;
+}
+.howitworks {
+  margin-top: 4%;
+}
+.step-spacing {
+  margin-left: 3%;
+}
+.step-1-num {
+  font-size: 20px;
+}
+.step-1-title {
+  font-weight: 500;
+    font-size: 20px;
+}
+.men-women {
+/*  margin-top: 4%;*/
+}
+.women-title {
+  letter-spacing: 5px;
+    font-size: 40px;
+/*    font-weight: bold;*/
+}
+.women-desc {
+  color: #545454;
+}
+.dash {
+  height:2px;
+    border:none;
+    color:#333;
+    background-color:#333;
+    width: 20%;
+}
+.shop-call {
+  margin-top: 25%;
+}
+.shop-women-desc {
+  height: 417px;
+    margin-left: -1.2%;
+    background: #ffe1f0;
+}
+.shop-women-img {
+  border-bottom: 1px solid #b2b2ff;
+}
+.shop_women {
+  color:#545454 !important;
+    text-decoration: none !important;
+}
+.shop_women:hover{
+  color:#545454;
+    text-decoration: none;
+}
+.onhover {
+  transition:all 0.3s ease;
+}
+.onhover:hover{
+  -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+}
+.men-title {
+  letter-spacing: 5px;
+    font-size: 40px;
+    color:white;
+}
+.men-desc {
+  color:white;
+}
+.dash1 {
+  height:2px;
+    border:none;
+    color:white;
+    background-color:white;
+    width: 20%;
+}
+.shop_men {
+  color:white !important;
+    text-decoration: none !important;
+}
+.shop_men:hover{
+  color:white;
+    text-decoration: none;
+}
+.shop-men-desc {
+    height: 417px;
+    margin-left: 120px;
+    background: #b2b2ff;
+    width: 555px;
+/*    margin-top: -0.7px;*/
+}
+.shop_men_img {
+  margin-left: -15px;
+}
+.shop-men-background {
+  background: #e5e5ff;
+/*    margin-top: -1px;*/
+}
+.shop-kids-desc {
+    height: 417px;
+    margin-left: -1.2%;
+    background: #b2d8b2;
+}
+.coupons{
+/*background:url(coupons.jpg) no-repeat center;*/
+background-size:cover;
+-webkit-background-size: cover;
+-o-background-size: cover;
+-ms-background-size: cover;
+-moz-background-size: cover;
+min-height: 470px;
+padding-top:110px;
+}
+
+.coupons-gd span {
+    background: black;
+    padding: 25px 24px;
+    border-radius: 100%;
+    color: #F3F3F3;
+    font-size: 24px;
+}
+.coupons-gd h4 {
+    color: black;
+    font-size: 17px;
+    text-transform: uppercase;
+    margin: 40px 0 20px;
+}
+.coupons-gd h3 {
+    color: black;
+    font-size: 23px;
+    text-transform: uppercase;
+    line-height: 1.8em;
+  margin: 83px 0 0;
+}
+.coupons-gd p {
+    text-align: center;
+    color: black;
+    font-size: 15px;
+    line-height: 2em;
+}
+/*-- //coupons --*/
+.carousel1{
+  margin: 0 auto;
+  padding: 40px;
+  color: #333;
+  height: auto;
+  margin-top: 3%;
+  background-image: url(images/coupons.jpg);
+  background-size: cover;
+  min-height: 470px;
+  padding-top: 110px;
+}
+.single-item {
+/*  padding-top: 110px;*/
+}
+.slideshow {
+  width: 100%;
+}
+.slick-slide {
+  text-align: center;
+/*  color: #419be0;*/
+  background-color:white;
+  margin: 10px;
+}
+.new-arrivals {
+  color:white;
+    margin-top: -5%;
+}
+.social-icon {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.social-icon li{
+  display: inline-block;
+  text-align: center;
+}
+
+.social-icon a {
+  display: block;
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+.social-icon .fb {
+  background: rgba(255, 255, 255, 0.85); /* social icon background color */
+  color: #000; /* social icon color */
+}
+
+.social-icon .fb:hover {
+  background:#3b5998; /* social icon hover background color */
+  color: #fff; /* social icon hover color */
+}
+.social-icon .twt {
+  background: rgba(255, 255, 255, 0.85); /* social icon background color */
+  color: #000; /* social icon color */
+}
+.social-icon .twt:hover {
+  background:#00aced; /* social icon hover background color */
+  color: #fff; /* social icon hover color */
+}
+.social-icon .ggl {
+  background: rgba(255, 255, 255, 0.85); /* social icon background color */
+  color: #000; /* social icon color */
+}
+.social-icon .ggl:hover {
+  background:#d34836; /* social icon hover background color */
+  color: #fff; /* social icon hover color */
+}
+.location-detection {
+  margin-top: 1%;
+}
+.location-input {
+  margin-top: 1%;
+}
+.footer {
+  position: relative;
+  bottom: 0;
+  padding-top: 5px;
+  width: 100%;
+  height: 60px;
+  background-color: #000;
+/*  margin-top: 3%;*/
+}
+.inner-addon { 
+    position: relative; 
+}
+
+/* style icon */
+.inner-addon .fa {
+  position: absolute;
+  padding: 6px;
+  pointer-events: none;
+  margin-left: 24.2%;
+  margin-top: -0.1%;
+}
+
+/* align icon */
+.left-addon .fa  { left:  12px;}
+.right-addon .fa { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  25px; }
+.right-addon input { padding-right: 30px; }
+#address_locate {
+  border-bottom:1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    width: 50%;
+}
+#address_locate:focus{
+  border-bottom:1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+}
+.detect-button {
+  margin-top: 2%;
+    margin-bottom: 2%;
+}

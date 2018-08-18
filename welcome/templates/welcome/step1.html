@@ -1,0 +1,102 @@
+{% extends 'welcome/checkout_nav.html' %}
+{% load staticfiles %}
+{% block body %}
+<br>
+
+
+<div class="container">
+<div class="col-sm-12">
+<div class="choose-block">
+    <div class="row">
+<div class="col-sm-6">
+<!--SHIPPING METHOD-->
+<div class="panel">
+    <div class="panel-heading">Address</div>
+    <div class="panel-body">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <div class="col-md-12">
+                <h4>Shipping Address</h4>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6 col-xs-12">
+                <strong>First Name:</strong>
+                <input type="text" name="first_name" class="form-control" id="id_first_name" required="true" />
+            </div>
+            <div class="span1"></div>
+            <div class="col-md-6 col-xs-12">
+                <strong>Last Name:</strong>
+                <input type="text" name="last_name" class="form-control" id="id_last_name" required="true" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12"><strong>Address:</strong></div>
+            <div class="col-md-12">
+                <input type="text" name="address_line" class="form-control" id="id_address_line" required="true" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12"><strong>City:</strong></div>
+            <div class="col-md-12">
+                <input type="text" name="city" class="form-control" id="id_city" required="true" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12"><strong>State:</strong></div>
+            <div class="col-md-12">
+                <input type="text" name="state" class="form-control" id="id_state" required="true" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12"><strong>Zip / Postal Code:</strong></div>
+            <div class="col-md-12">
+                <input type="text" name="pincode" class="form-control" id="id_pincode" required="true" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12"><strong>Phone Number:</strong></div>
+            <div class="col-md-12"><input type="text" name="phone_number" class="form-control" id="id_phone_number" required="true" /></div>
+        </div>
+        <div class="form-group">
+        <div class="col-md-12"><br></div>
+        
+            <div class="col-md-4"><input type="submit" name="continue" class="form-control btn" value="Continue"/></div>
+             <div class="col-md-4 pull-right"><a href="{% url 'welcome:cart' %}"><input type="button" class="form-control btn" value="Return to Cart"/></a></div>
+        </div>
+        </form>
+      </div>
+    </div>
+</div>
+
+<div class="col-sm-6">
+    <h5> An address from your address book?</h5>
+    {% for a in addre %}
+        <div class="well">
+
+            <address>
+
+                <span>{{ a.first_name}} {{a.last_name}}</span><br>
+                <span>{{a.address_line}}</span><br>
+                <span>{{a.city}}</span><br>
+                <span>{{a.state}}</span><br>
+                <span>{{a.pincode}}</span><br>
+                <span>{{a.phone_number}}</span><br>
+                <span>India</span>
+
+
+            </address>
+            <!--<form action="" method="post" id="select_shipping_address_{{ address.id }}">
+    }
+-->
+            <a href="{% url 'welcome:step3' a.id %}"><button type="submit" class="btn">Ship to this address</button></a>
+        </div>
+    {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+{% endblock %}

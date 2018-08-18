@@ -1,0 +1,399 @@
+{% extends 'welcome/header.html' %}
+{% load staticfiles %}
+  {% block body %}
+<link rel="stylesheet" type="text/css" href="{% static 'welcome/slick/slick.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'welcome/slick/slick-theme.css' %}">
+<script type="text/javascript" src="{% static 'welcome/slick/slick.min.js' %}"></script>
+<script src="https://unpkg.com/scrollreveal@3.3.2/dist/scrollreveal.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'welcome/style.css' %}">
+<style type="text/css">
+.coupons{
+/*background:url(coupons.jpg) no-repeat center;*/
+background-size:cover;
+-webkit-background-size: cover;
+-o-background-size: cover;
+-ms-background-size: cover;
+-moz-background-size: cover;
+min-height: 470px;
+padding-top:110px;
+}
+
+.coupons-gd span {
+    background: black;
+    padding: 25px 24px;
+    border-radius: 100%;
+    color: #F3F3F3;
+    font-size: 24px;
+}
+.coupons-gd h4 {
+    color: black;
+    font-size: 17px;
+    text-transform: uppercase;
+    margin: 40px 0 20px;
+}
+.coupons-gd h3 {
+    color: black;
+    font-size: 23px;
+    text-transform: uppercase;
+    line-height: 1.8em;
+    margin: 83px 0 0;
+}
+.coupons-gd p {
+    text-align: center;
+    color: black;
+    font-size: 15px;
+    line-height: 2em;
+}
+
+.carousel1{
+  margin: 0 auto;
+  padding: 40px;
+  color: #333;
+  height: auto;
+  margin-top: 3%;
+  background-image:url('/static/welcome/images/coupons.jpg');
+  background-size: cover;
+  min-height: 470px;
+  padding-top: 110px;
+}
+.single-item {
+/*  padding-top: 110px;*/
+}
+.slideshow {
+    width: 100%;
+}
+.slick-slide {
+  text-align: center;
+/*  color: #419be0;*/
+  background-color:white;
+  margin: 10px;
+}
+.new-arrivals {
+    color:white;
+    margin-top: -5%;
+}
+.social-icon {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.social-icon li{
+  display: inline-block;
+  text-align: center;
+}
+
+.social-icon a {
+  display: block;
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+.social-icon .fb {
+  background: rgba(255, 255, 255, 0.85); /* social icon background color */
+  color: #000; /* social icon color */
+}
+
+.social-icon .fb:hover {
+  background:#3b5998; /* social icon hover background color */
+  color: #fff; /* social icon hover color */
+}
+.social-icon .twt {
+  background: rgba(255, 255, 255, 0.85); /* social icon background color */
+  color: #000; /* social icon color */
+}
+.social-icon .twt:hover {
+  background:#00aced; /* social icon hover background color */
+  color: #fff; /* social icon hover color */
+}
+.social-icon .ggl {
+  background: rgba(255, 255, 255, 0.85); /* social icon background color */
+  color: #000; /* social icon color */
+}
+.social-icon .ggl:hover {
+  background:#d34836; /* social icon hover background color */
+  color: #fff; /* social icon hover color */
+}
+.location-detection {
+    margin-top: 1%;
+}
+.location-input {
+    margin-top: 1%;
+}
+.footer {
+  position: relative;
+  bottom: 0;
+  padding-top: 5px;
+  width: 100%;
+  height: 60px;
+  background-color: #000;
+/*  margin-top: 3%;*/
+}
+.inner-addon { 
+    position: relative; 
+}
+
+/* style icon */
+.inner-addon .fa {
+  position: absolute;
+  padding: 6px;
+  pointer-events: none;
+  margin-left: 24.2%;
+  margin-top: -0.1%;
+}
+
+/* align icon */
+.left-addon .fa  { left:  12px;}
+.right-addon .fa { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  25px; }
+.right-addon input { padding-right: 30px; }
+#address_locate {
+    border-bottom:1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    width: 50%;
+}
+#address_locate:focus{
+    border-bottom:1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+}
+.detect-button {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+</style>
+<script>
+var a=[],b,c=1;
+$(document).ready(function(){
+    getLocation();
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function showPosition(position) {
+    a[0]=position.coords.latitude;  
+    a[1]=position.coords.longitude; 
+    console.log(a[0]+","+a[1]);
+}
+$('.detect').click(function(){
+$.getJSON("http://ipinfo.io", function (response) {
+    b=response.loc;
+//    a=b.split(',');
+$.getJSON("http://apis.mapmyindia.com/advancedmaps/v1/t1s3ureuiu3dq27pm3aiq21g7bhlx574/rev_geocode?lat="+a[0]+"&lng="+a[1]).done(function(res){
+    //console.log(a+" , "+b);
+    var build=res.results[0].houseName;
+    var street=res.results[0].street;
+    var sublocality=res.results[0].subLocality;
+    var locality=res.results[0].locality;
+    var city=res.results[0].city;
+    var arr=[build,street,sublocality,locality,city];
+    var text=document.getElementById('address_locate');
+    console.log(build+","+street+","+sublocality+","+locality+","+city);
+//    $('#address_locate').val(build+","+street+","+sublocality+","+locality+","+city);
+    for(var i=0;i<=4;i++){
+        if(arr[i]!="" && c>0){
+//            $('#address_locate').val(arr[i]+",");
+              if(i!=4){
+                text.value+=arr[i]+",";
+            }
+            if(i==4){
+                text.value+=arr[i];
+            }
+        }
+    }
+    c--;
+});
+});
+});
+});    
+</script>
+<!--carousel-->
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="2000">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0"></li>
+    <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item">
+      <img src="{% static 'welcome/images/men.jpeg' %}" alt="Chania" class="carousel-image">
+      <div class="carousel-caption">
+        <h1>For Men</h1>
+        <p class="carousel-subtitle">Suits,Sherwanis and lots more...</p>
+      </div>
+    </div>
+
+    <div class="item active">
+      <img src="{% static 'welcome/images/women.jpg' %}" alt="Chicago" class="carousel-image">
+      <div class="carousel-caption">
+        <h1>For Women</h1>
+        <p class="carousel-subtitle">Lehengas,Gowns and all you need...</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="{% static 'welcome/images/kids.jpg' %}" alt="New York" class="carousel-image">
+      <div class="carousel-caption">
+        <h1>For Kids</h1>
+        <p class="carousel-subtitle">Find It here Whatever You want...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <!--<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>-->
+</div>
+<div class="coupons slide2">
+    <div class="container">
+        <div class="coupons-grids text-center">
+            <div class="col-md-3 coupons-gd">
+                <h3>Rent your outfit in a simple way</h3>
+            </div>
+            <div class="col-md-3 coupons-gd">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <h4>BOOK YOUR OUTFIT</h4>
+                <p>Select your delivery date and the duration you need it on our booking calendar.</p>
+            </div>
+            <div class="col-md-3 coupons-gd">
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                <h4>THE PERFECT FIT</h4>
+                <p>Your measurements will be taken at your home. Your outfit will be fit exactly to your size.</p>
+            </div>
+            <div class="col-md-3 coupons-gd">
+                <span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>
+                <h4>GET FREE DELIVERY</h4>
+                <p>Free delivery. Ask for it a day before your event so we can make last minute adjustments, if any.</p>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row men-women slide3">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <img src="{% static 'welcome/images/shop_women.jpeg' %}" alt="women" class="img-responsive shop-women-img">
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 shop-women-desc">
+            <center class="shop-call"><h1 class="women-title">SULTRY & SMART</h1>
+            <h3 class="women-desc">HOT SPRING LOOKS</h3>
+            <hr class="dash">
+            <a href="{% url 'welcome:shop_women' %}" class="shop_women"><h3 class="onhover">Shop Women</h3></a></center>
+        </div>
+    </div>
+</div>
+<div class="concontainer-fluid shop-men-background">
+    <div class="row slide4">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 shop-men-desc">
+            <center class="shop-call"><h1 class="men-title">ELEGANT & SLICK</h1>
+            <h3 class="men-desc">GET READY FOR SUMMER</h3>
+            <hr class="dash1">
+            <a href="{% url 'welcome:shop_man' %}" class="shop_men"><h3 class="onhover">Shop Men</h3></a></center>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <img src="{% static 'welcome/images/shop_men.jpeg' %}" alt="men" class="img-responsive shop_men_img">
+        </div>
+    </div>
+</div>
+<div class="container slide5">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <img src="{% static 'welcome/images/shop_kids.jpg' %}" alt="women" class="img-responsive shop-women-img">
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 shop-kids-desc">
+            <center class="shop-call"><h1 class="women-title">FUNKY & COOL</h1>
+            <h3 class="women-desc">GET READY TINY ROCKSTARS</h3>
+            <hr class="dash">
+            <a href="{% url 'welcome:shop_kids' %}" class="shop_women"><h3 class="onhover">Shop Kids</h3></a></center>
+        </div>
+    </div>
+</div>
+
+<div class='container-fluid carousel1 slide6'>
+    <center><h2 class="new-arrivals">NEW ARRIVALS</h2></center>
+  <div class='single-item'>
+  {% for p in product %}
+   <a href="{% url 'welcome:detail' p.id %}"> <div><img src="{{ p.pimage.url}}" class="img-responsive"></div></a>
+  {% endfor %}
+  </div>
+</div>
+<div class="container location-detection slide7">
+<div class="col-lg-12">
+        <div>
+            <div class="col-lg-12">
+            <center><h2 class="delivery">Enter your delivery location</h2></center>
+            </div>
+            <div class="col-lg-12 location-input">
+                <center><div class="col-lg-12 inner-addon left-addon">
+                <i class="fa fa-location-arrow" aria-hidden="true" style="font-size:x-large;color:black"></i>
+                <input class="location form-control" placeholder="Just Click..." autocomplete="off" id="address_locate" disabled>
+                </div>
+                <div class="col-lg-12 detect-button">
+                    <button class="btn btn-default btn-danger detect">Detect Your Location <i class="fa fa-map-marker" aria-hidden="true" style="font-size:large"></i></button>
+                </div></center>
+            </div>
+        </div>
+</div>
+</div>
+<footer class="footer">
+      <div class="container">
+ <ul class="social-icon animate pull-right">
+                  <!--<li><h2 class="title_footer">Dress Me Up</h2></li>-->
+                  <li><a href="#" title="facebook" target="_blank" class="fb"><i class="fa fa-facebook"></i></a></li> <!-- change the link to social page and edit title-->
+                  <li><a href="#" title="twitter" target="_blank" class="twt"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="#" title="google plus" target="_blank" class="ggl"><i class="fa fa-google-plus"></i></a></li>
+                </ul>
+                </div>
+</footer>
+<script>
+$(document).ready(function(){
+    $(".dropdown").hover(            
+        function() {
+            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
+            $(this).toggleClass('open');        
+        },
+        function() {
+            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("400");
+            $(this).toggleClass('open');       
+        }
+    );
+
+  $(".single-item").slick({
+  dots: false,
+  slidesToShow: 3,
+  centerMode: true,
+  centerPadding: '40px',
+  autoplay: true,
+  autoplaySpeed: 1000,
+});         
+});
+window.sr = ScrollReveal();
+sr.reveal('.slide1',{ duration: 500 });
+sr.reveal('.slide2',{ duration: 500 });
+sr.reveal('.slide3',{ duration: 500 });
+sr.reveal('.slide4',{ duration: 500 });
+sr.reveal('.slide5',{ duration: 500 });
+sr.reveal('.slide6',{ duration: 500 });
+sr.reveal('.slide7',{ duration: 500 });
+</script>
+{% endblock %}

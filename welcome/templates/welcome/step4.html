@@ -1,0 +1,30 @@
+{% extends 'welcome/checkout_nav.html' %}
+{% load staticfiles %}
+{% block body %}
+ <style type="text/css">
+        .btn {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: 1px solid black;
+    padding: 8px;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+.btn:hover {
+        background-color: black;
+        color: white;
+    }
+        a{
+        color: black;
+    }
+
+    </style>
+    <center>
+<div class="container" style="letter-spacing: 4px;font-size: 30px;margin-top: 40px;">Thank You !! Your Order has been placed !! Your Order Number is {{number.id}}</div>
+<a href="{% url 'welcome:index' %}" >
+                        <button type="button" class="btn">
+                            Continue Shopping
+                        </button></a></td>
+                        </center>
+{% endblock %}

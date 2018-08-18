@@ -1,0 +1,71 @@
+{% load staticfiles %}
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'welcome/header_style.css' %}">
+  <link rel="stylesheet" href="{% static 'welcome/style.css' %}">
+  <style type="text/css">
+  	body, .panel{
+  		background-color: #f6f6f6;
+  		letter-spacing: 3px;
+  	}
+  	.panel{
+  		border: 1px solid black;
+  	}
+  	.panel-heading{
+  		color: white;
+  		background-color: #2d2d30;
+      opacity: 0.9;
+  	}
+  	.navbar{
+  		border-radius: 0px;
+
+  	}
+
+  	.l{
+  		margin-left: 30px;
+  	}
+    .l:active a{
+      background-color: black;
+    }
+    .btn {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: 1px solid black;
+    border-radius: 0px;
+    padding: 8px;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    letter-spacing: 2px;
+}
+.btn:hover {
+        background-color: black;
+        color: white;
+    }
+        a{
+      color: black;
+    }
+
+  </style>
+
+</head>
+<br>
+<h1 class="container">Dress Me Up</h1>
+<br>
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <ul class="nav navbar-nav">
+      <li class="l"><a href="#" class="active">1.Shipping Address</a></li>
+      <li class="l"><a href="#">2.Preview</a></li>
+      <li class="l"><a href="#">3.Confirmation</a></li>
+
+    </ul>
+  </div>
+</nav>
+{% block body%}
+{% endblock %}

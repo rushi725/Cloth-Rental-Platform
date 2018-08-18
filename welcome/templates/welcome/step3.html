@@ -1,0 +1,163 @@
+{% extends 'welcome/checkout_nav.html' %}
+{% load staticfiles %}
+{% block body %}
+ <style type="text/css">
+        body {
+            background-color: #f6f6f6;
+            letter-spacing: 2px;
+        }
+        .btn {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: 1px solid black;
+    padding: 8px;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+.btn:hover {
+        background-color: black;
+        color: white;
+    }
+        a{
+        color: black;
+    }
+
+    </style>
+    <br><br><br>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+        <h1>Preview</h1>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th class="text-center">Delivery Date</th>
+                        <th class="text-center">Price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for p in products %}
+                    <tr>
+                        <td class="row" style="padding-top: 20px;">
+                        <div class="col-sm-7 col-md-5">
+                            <a class="" href="{% url 'welcome:detail' p.product.id %}"> <img class="media-object" src="{{p.product.pimage.url}}" style="width: 150px; height:150px;"> </a></div>
+                               <div class="col-sm-8 col-md-6">
+                                 <h4>{{ p.product.title }}</h4>
+                                <h5>{{ p.product.description }}</h5> 
+                                <h5> Size {{p.size}}</h5>
+                                <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
+                            </div>
+                        </td>
+ 
+                        
+                        <td class="col-sm-2 col-md-2 text-center" style="font-size: 17px;padding-top: 20px;"><strong>{{p.delivery_date}}</strong></td>
+                        <td class="col-sm-2 col-md-2 text-center" style="padding-top: 20px;font-size: 20px;"><strong><span class="fa fa-inr"></span>{{p.product.price}}</strong></td>
+                        <td class="col-sm-1 col-md-1" style="padding-top: 20px;padding-left: 50px;">
+                        </td>
+                    </tr>
+                    {% endfor %}
+                   <tr>
+
+                    <td>
+                     <p><b>Shipping Address</b></p>
+            <div class="well">
+
+            <address>
+
+                <span>{{ a.first_name}} {{a.last_name}}</span><br>
+                <span>{{a.address_line}}</span><br>
+                <span>{{a.city}}</span><br>
+                <span>{{a.state}}</span><br>
+                <span>{{a.pincode}}</span><br>
+                <span>{{a.phone_number}}</span><br>
+                <span>India</span>
+                <a href="{% url 'welcome:step1' %}">
+                        <button type="button" class="btn pull-right">
+                            Change
+                        </button></a>
+            </address>
+
+
+            </div>
+
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    </tr>
+                    <tr>
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td><h5>Shipping method</h5></td>
+                        <td class="text-right"><h5><strong>COD</strong></h5></td>
+                    </tr>
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td><h5>Shipping Charge</h5></td>
+                        <td class="text-right"><h5><strong>Free</strong></h5></td>
+                    </tr>
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td><h3>Total</h3></td>
+                        <td class="text-right"><h3><strong><span class="fa fa-inr"></span>{{sumi.product__price__sum}}</strong></h3></td>
+                    </tr>
+                    <tr>
+                        <td>   </td>
+                       <td> </td>
+                        <td></td>
+                        <td><a href="{% url 'welcome:step4' %}">
+                        <form id="myForm" action="{% url 'welcome:step4' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="hidden" id="id_shipping_address" value="{{a.id}}" name="shipping_address">
+                        <button type="submit" class="btn">
+                            Place Order
+                        </button></a></form></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<form id="myForm" action="{% url 'welcome:step4' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="hidden" id="id_shipping_address" value="{{a.id}}" name="shipping_address"></form>
+<script>
+$(document).ready(function(){
+    $(".dropdown").hover(            
+        function() {
+            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
+            $(this).toggleClass('open');        
+        },
+        function() {
+            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("400");
+            $(this).toggleClass('open');       
+        }
+    );
+
+  $(".single-item").slick({
+  dots: false,
+  slidesToShow: 3,
+  centerMode: true,
+  centerPadding: '40px',
+  autoplay: true,
+  autoplaySpeed: 1000,
+});         
+});
+window.sr = ScrollReveal();
+sr.reveal('.slide1',{ duration: 500 });
+sr.reveal('.slide2',{ duration: 500 });
+sr.reveal('.slide3',{ duration: 500 });
+sr.reveal('.slide4',{ duration: 500 });
+sr.reveal('.slide5',{ duration: 500 });
+sr.reveal('.slide6',{ duration: 500 });
+sr.reveal('.slide7',{ duration: 500 });
+</script>
+{% endblock %}
